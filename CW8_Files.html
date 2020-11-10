@@ -36,17 +36,18 @@ function checkFiles(b) {
     let remoteName = "";
     remoteName = remote.value.split("/");
     for(let x of a){
+        out.innerText += x.name + ", ";
         if(x.type == b.type && x.size == b.size){
             isFound = true;
             fileName = x.name;
         }
     }
     if(isFound){
-        out.innerText += remoteName[remoteName.length - 1] 
+        out.innerText +=  "\n" + remoteName[remoteName.length - 1] 
                           + " is same with " + fileName + "\n";
     }
     else{ 
-        out.innerText += "All files are different";
+        out.innerText += "\nAll files are different";
         }
    
 }
