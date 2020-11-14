@@ -11,7 +11,11 @@
 
     <style>
         body {
-            max-width: 440px;
+            max-width: 600px;
+        }
+
+        #backG{
+            background: rgb(167, 110, 219);
         }
 
         .link {
@@ -20,11 +24,22 @@
             font-style: italic;
         }
 
+        .baslık {
+            background: firebrick
+        }
+
+        #b1 {
+            color: gold
+        }
+        #s1{
+            background: rgb(111, 204, 111);
+        }
+
         .liste {
             visibility: hidden;
             font: 11px arial, sans-serif;
-            color: white;
-            background: blue;
+            color: rgb(216, 202, 13);
+            background: white;
             cursor: text;
             padding: 6px;
             position: absolute;
@@ -39,58 +54,66 @@
 </head>
 
 <body>
-
-    <h2 id="title">Student Database</h2>
-    <button onclick="randomStd()">Random</button>
-    <button onclick="findBest()">Best GPA</button>
-    <button onclick="out.innerText=&quot;&quot;">Clear</button>
-
-    <p>Student id:
-        <input type="number" id="studentId" onchange="showStudent(value)">
-        <button onclick="examSchedule()">Exam Schedule</button>
-    </p>
-
-    <p id="out1"> </p>
-
-    <p>Course id:
-        <input type="text" id="courseId" value="math 206 ">
-        <button onclick="studentList()">Student List</button>
-    </p>
-
-    <p id="out2"> </p>
-
-    <p>Room id:
-        <input type="text" id="roomId" value="BZ003">
-        <button onclick="courseList()">Course List</button>
-        <button onclick="totalNumber()">Total Number</button>
-    </p>
-
-    <p id="out3"> </p>
-
-    <p>First Letter:
-        <input type="text" id="firstLetter">
-        <button onclick="studentsWithLetter()">Students With Given Letter</button>
-    </p>
-
-    <p id="out4"> </p>
-
-    <p>HW2 Part2:
-        <input type="text" id="givenId" value="315866000">
-        <button onclick="HW2Part2()">part2</button>
-    </p>
-
-    <p id="out5"> </p>
+    <div id="backG" class="baslık">
+        <div id="b1" class="baslık">
+            <h2 id="title">Student Database</h2>
+        </div>
 
 
-    <p id="out" onclick="doClick(event)">Result:</p>
+        <button onclick="randomStd()">Random</button>
+        <button onclick="findBest()">Best GPA</button>
+        <button onclick="out.innerText=&quot;&quot;">Clear</button>
 
-    <hr>
-    <b>Sample code</b>
-    <pre
-        id="sample">class Course { //implement this<br>    constructor( ) {<br>    }<br>    toString() {<br>        return ''<br>    }<br>    static fromString(s) {<br>        return null<br>    }<br>}<br>function readCourses() {<br>    fetch(LINK+"Courses.txt").then(r =&gt; r.text())<br>    //.then( Implement this )<br>}<br>function findBest() { //the best gpa in stdMap<br>    report("Implement this");<br>}</pre>
-    <hr>
+        <p>Student id:
+            <input type="number" id="studentId" onchange="showStudent(value)">
+            <button onclick="examSchedule()">Exam Schedule</button>
+        </p>
+
+        <p id="out1"> </p>
+
+        <p>Course id:
+            <input type="text" id="courseId" value="math 206 ">
+            <button onclick="studentList()">Student List</button>
+        </p>
+
+        <p id="out2"> </p>
+
+        <p>Room id:
+            <input type="text" id="roomId" value="BZ003">
+            <button onclick="courseList()">Course List</button>
+            <button onclick="totalNumber()">Total Number</button>
+        </p>
+
+        <p id="out3"> </p>
+
+        <p>First Letter:
+            <input type="text" id="firstLetter">
+            <button onclick="studentsWithLetter()">Students With Given Letter</button>
+        </p>
+
+        <p id="out4"> </p>
+
+        <p>HW2 Part2:
+            <input type="text" id="givenId" value="315866000">
+            <button onclick="HW2Part2()">part2</button>
+        </p>
+
+        <p id="out5"> </p>
 
 
+        <p id="out" onclick="doClick(event)">Result:</p>
+
+        <hr>
+    </div>
+
+    <div id="s1" class="baslık">
+    
+        <b>Sample code</b>
+        <pre
+            id="sample">class Course { //implement this<br>    constructor( ) {<br>    }<br>    toString() {<br>        return ''<br>    }<br>    static fromString(s) {<br>        return null<br>    }<br>}<br>function readCourses() {<br>    fetch(LINK+"Courses.txt").then(r =&gt; r.text())<br>    //.then( Implement this )<br>}<br>function findBest() { //the best gpa in stdMap<br>    report("Implement this");<br>}</pre>
+        <hr>
+    </div>
+   
     <script>
         "use strict";
         class Student {
@@ -192,7 +215,8 @@
 
             let schedule = "";
             if (document.getElementById("studentId").value == "") {
-                document.getElementById("out1").innerText = "Student id is empty";
+                document.getElementById("out1").innerText 
+                = "Student id is empty";
 
             } else {
                 for (let s of stdMap.values()) {
@@ -208,9 +232,11 @@
                     }
                 }
                 if (schedule == "") {
-                    document.getElementById("out1").innerText = "There is no student on that id.";
+                    document.getElementById("out1").innerText 
+                    = "There is no student on that id.";
                 } else {
-                    document.getElementById("out1").innerHTML = schedule;
+                    document.getElementById("out1").innerHTML 
+                    = schedule;
                 }
             }
         }
@@ -221,11 +247,13 @@
             s.push("Students That Takes " + id + " Lesson <br>");
             for (let std of stdMap.values())
                 if (std.list.includes(id))
-                    s.push("<span class=link>" + std.id + " " + std.name + "<br>");
+                    s.push("<span class=link>" + std.id + " " + 
+                    std.name + "<br>");
             if (s.length > 0) {
                 document.getElementById("out2").innerHTML = s;
             }
-            else document.getElementById("out2").innerText = ("No students in " + id);
+            else document.getElementById("out2").innerText = 
+            ("No students in " + id);
             return s
         }
 
@@ -241,7 +269,8 @@
             if (c.length > 0) {
                 document.getElementById("out3").innerHTML = c;
             }
-            else document.getElementById("out3").innerHTML = "No course in " + id;
+            else document.getElementById("out3").innerHTML 
+            = "No course in " + id;
             return c
         }
 
@@ -254,9 +283,12 @@
                 }
             }
             if (c.length > 0) {
-                document.getElementById("out3").innerHTML = "Total number of courses on " + id + " this room :   " + c.length;
+                document.getElementById("out3").innerHTML 
+                = "Total number of courses on " + id + " this room :   " 
+                + c.length;
             }
-            else document.getElementById("out3").innerHTML = "No course in " + id;
+            else document.getElementById("out3").innerHTML 
+            = "No course in " + id;
         }
 
         function studentsWithLetter() {
@@ -270,7 +302,8 @@
             if (s.length > 0) {
                 document.getElementById("out4").innerHTML = s;
             }
-            else document.getElementById("out4").innerHTML = "No students starts with that letter.";
+            else document.getElementById("out4").innerHTML 
+            = "No students starts with that letter.";
         }
 
         function HW2Part2() {
@@ -299,7 +332,8 @@
                 secondCount++
             }
 
-            document.getElementById("out5").innerHTML = "First Count: " + firstCount + "<br>" +
+            document.getElementById("out5").innerHTML = "First Count: " 
+            + firstCount + "<br>" +
                 "Second Count: " + secondCount + "<br>" +
                 "First Time: " + firstTime + "<br>" +
                 "Second Time: " + secondTime + "<br>"
@@ -315,7 +349,9 @@
                 .then(t => makeData(t, Course, crsMap))
         }
         title.innerText = document.title
-        sample.innerText = Course + "\n" + readCourses + "\n" + findBest
+        sample.innerText = Course + "\n" + readCourses + "\n" + findBest + "\n" + examSchedule
+            + "\n" + studentList + "\n" + courseList + "\n" + totalNumber + "\n" + studentsWithLetter + "\n" + HW2Part2;
+
         readStudents(); readCourses();
     </script>
 
