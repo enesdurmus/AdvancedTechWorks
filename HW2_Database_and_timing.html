@@ -50,10 +50,14 @@
         <button onclick="examSchedule()">Exam Schedule</button>
     </p>
 
+    <p id="out1"> </p>
+
     <p>Course id:
         <input type="text" id="courseId" value="math 206 ">
         <button onclick="studentList()">Student List</button>
     </p>
+
+    <p id="out2"> </p>
 
     <p>Room id:
         <input type="text" id="roomId" value="BZ003">
@@ -61,14 +65,21 @@
         <button onclick="totalNumber()">Total Number</button>
     </p>
 
+    <p id="out3"> </p>
+
     <p>First Letter:
         <input type="text" id="firstLetter">
         <button onclick="studentsWithLetter()">Students With Given Letter</button>
     </p>
+
+    <p id="out4"> </p>
+
     <p>HW2 Part2:
         <input type="text" id="givenId" value="315866000">
         <button onclick="HW2Part2()">part2</button>
     </p>
+
+    <p id="out5"> </p>
 
 
     <p id="out" onclick="doClick(event)">Result:</p>
@@ -178,14 +189,15 @@
         }
 
         function examSchedule() {
+
             let schedule = "";
             if (document.getElementById("studentId").value == "") {
-                report("Student id is empty");
+                document.getElementById("out1").innerText = "Student id is empty";
 
             } else {
                 for (let s of stdMap.values()) {
                     if (s.id == document.getElementById("studentId").value) {
-                        schedule += s.name + "  Exam Schedule is: <br> ";
+                        schedule += s.name + "'s  Exam Schedule is: <br> ";
                         for (let l of s.list) {
                             for (let c of crsMap) {
                                 if (c[0] == l) {
@@ -196,37 +208,40 @@
                     }
                 }
                 if (schedule == "") {
-                    report("There is no student on that id.");
+                    document.getElementById("out1").innerText = "There is no student on that id.";
                 } else {
-                    report(schedule);
+                    document.getElementById("out1").innerHTML = schedule;
                 }
             }
         }
+
         function studentList() {
             let id = document.getElementById("courseId").value;
             let s = [];
+            s.push("Students That Takes " + id + " Lesson <br>");
             for (let std of stdMap.values())
                 if (std.list.includes(id))
-                    s.push(std.id + " " + std.name);
+                    s.push("<span class=link>" + std.id + " " + std.name + "<br>");
             if (s.length > 0) {
-                report("Student List That Taking " + id + " Course :  ", s.length + " students ", s);
+                document.getElementById("out2").innerHTML = s;
             }
-            else report("No students in " + id);
+            else document.getElementById("out2").innerText = ("No students in " + id);
             return s
         }
 
         function courseList() {
             let id = document.getElementById("roomId").value;
             let c = [];
+            c.push("Course List on " + id + " this room : <br>");
             for (let cr of crsMap.values()) {
                 if (cr.room.includes(id)) {
-                    c.push(cr.id);
+                    c.push("<span class=link>" + cr.id + "<br>");
                 }
             }
             if (c.length > 0) {
-                report("Course List on " + id + " this room :   ", c.length + " courses", c);
+                document.getElementById("out3").innerHTML = c;
             }
-            else report("No course in " + id);
+            else document.getElementById("out3").innerHTML = "No course in " + id;
             return c
         }
 
@@ -239,21 +254,23 @@
                 }
             }
             if (c.length > 0) {
-                report("Total number of courses on " + id + " this room :   " + c.length);
+                document.getElementById("out3").innerHTML = "Total number of courses on " + id + " this room :   " + c.length;
             }
-            else report("No course in " + id);
+            else document.getElementById("out3").innerHTML = "No course in " + id;
         }
 
         function studentsWithLetter() {
             let letter = document.getElementById("firstLetter").value;
+            letter = letter.toUpperCase();
             let s = [];
+            s.push("Students that starts with " + letter + ": <br>");
             for (let std of stdMap.values())
                 if (std.name[0] == letter)
-                    s.push(std.name);
+                    s.push(std.name + "<br>");
             if (s.length > 0) {
-                report("Students that starts with " + letter + ": " + s);
+                document.getElementById("out4").innerHTML = s;
             }
-            else report("No students starts with that letter.");
+            else document.getElementById("out4").innerHTML = "No students starts with that letter.";
         }
 
         function HW2Part2() {
@@ -267,9 +284,7 @@
             let timeNow = Date.now();
             for (let i = 0; i < 10000; i++) {
                 if (keys.includes(String(parseInt(studentId) + i))) {
-                    console.log()
                     firstTime = Date.now() - timeNow;
-                    console.log(Date.now()+ "        "+ timeNow);
                     break;
                 }
                 firstCount++
@@ -278,15 +293,16 @@
             for (let j = 0; j < 10000; j++) {
                 if (stdMap.has(String(parseInt(studentId) + j))) {
                     secondTime = Date.now() - timeNow2;
+                    console.log(Date.now() + "        " + timeNow2);
                     break;
                 }
                 secondCount++
             }
-            report("First Count: " + firstCount)
-            report("Second Count: " + secondCount)
-            report("First Time: " + firstTime)
-            report("Second Time: " + secondTime)
 
+            document.getElementById("out5").innerHTML = "First Count: " + firstCount + "<br>" +
+                "Second Count: " + secondCount + "<br>" +
+                "First Time: " + firstTime + "<br>" +
+                "Second Time: " + secondTime + "<br>"
         }
 
         const LINK = "https://maeyler.github.io/JS/data/"
