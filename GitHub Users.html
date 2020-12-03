@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://blm-fsmvu.github.io/305/work/GitHub_Users.html -->
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="https://blm-fsmvu.github.io/305/images/icon192.png">
+  <title>GitHub Users</title>
+  <style>
+    body {
+      max-width: 350px;
+    }
+
+    img {
+      padding-right: 12px;
+      width: 350px;
+    }
+
+    icon {
+      width: 20;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2 id="title">GitHub Users</h2>
+  <input type="text" id="usr" value="maeyler" onchange="readUser()">
+  <p id="out"><img src="./GitHub Users_files/71901078" align="left"><br><a
+    href="https://github.com/BLM-FSMVU" target="NewTab"></a></p>
+  </p>
+
+  <script>
+    "use strict";
+    function error(t) {
+      out.style.color = 'red'
+      out.innerText = t; throw t
+    }
+    async function toJSON(url) {
+      let r = await fetch(url)
+      if (!r.ok) error(r.statusText)
+      return r.json()
+    }
+    async function readUser() {
+      const BR = "<BR>",
+        URL = "https://api.github.com/users/"
+      let u = await toJSON(URL + usr.value)
+      if (!u || !u.login)
+        error(usr.value + ' not found')
+      //u.login is the same as usr.value
+      out.style.color = ''
+      out.innerHTML = ''
+      //start with a tiny image
+      let i = document.createElement("img")
+      i.src = u.avatar_url
+      i.align = "left"
+      out.appendChild(i)
+      //add name and location
+
+      let s = u.name;
+      out.innerHTML += s.bold() + BR;
+
+      let x = u.login;
+      out.innerHTML += x + BR;
+
+      let school = u.company;
+      out.innerHTML += school + BR;
+
+      let location = u.location;
+      out.innerHTML += location + BR;
+
+      let m = (u.email ? u.email : "null");
+      if (m == "null") {
+        out.innerHTML += "Mail'e Ulaşılamamıştır."+BR;
+      } else {
+        let b = document.createElement("a");
+        b.href = m;
+        b.target = "NewTab";
+        b.innerText = m;
+        out.appendChild(b);
+        out.innerHTML += BR;
+      }
+      //add link to GitHub 
+      let h = "https://" + u.login + ".github.io/";
+      let a = document.createElement("a")
+      a.href = h
+      a.target = "NewTab"
+      a.innerText = h
+      out.appendChild(a)
+    }
+    title.innerText = document.title
+    out.innerText = "Reading data"
+    readUser()
+  </script>
+
+
+
+</body>
+
+</html>
