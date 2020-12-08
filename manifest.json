@@ -1,11 +1,13 @@
-{
-    "name": "JavaScript samples",
-    "start_url": "index.html",
+  {
+    "name": "EnesDurmus",
+    "short_name": "Enes",
+    "start_url": "Course_outline.html",
     "display": "standalone",
-    "background_color": "cyan",
+    "background_color": "orange",
+    "theme-color": "orange",
     "icons": [
       {
-        "src": "Images/icon192.png",
+        "src": "images/icon192.png",
         "sizes": "192x192",
         "type": "image/png"
       }
