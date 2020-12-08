@@ -1,7 +1,7 @@
   {
     "name": "EnesDurmus",
     "short_name": "Enes",
-    "start_url": "Course_outline.html",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "orange",
     "theme-color": "orange",
