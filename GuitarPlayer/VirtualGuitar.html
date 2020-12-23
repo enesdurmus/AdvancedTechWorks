@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>GuitarPlayer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="defaultSongs.js" defer></script>
+
+</head>
+
+<body>
+  <audio id="0" src="Sounds/0.wav" preload="auto"></audio>
+  <audio id="1" src="Sounds/1.wav" preload="auto"></audio>
+  <audio id="2" src="Sounds/2.wav" preload="auto"></audio>
+  <audio id="3" src="Sounds/3.wav" preload="auto"></audio>
+  <audio id="4" src="Sounds/4.wav" preload="auto"></audio>
+  <audio id="5" src="Sounds/5.wav" preload="auto"></audio>
+  <audio id="6" src="Sounds/6.wav" preload="auto"></audio>
+  <audio id="7" src="Sounds/7.wav" preload="auto"></audio>
+  <audio id="8" src="Sounds/8.wav" preload="auto"></audio>
+  <audio id="9" src="Sounds/9.wav" preload="auto"></audio>
+  <audio id="10" src="Sounds/10.wav" preload="auto"></audio>
+  <audio id="11" src="Sounds/11.wav" preload="auto"></audio>
+  <audio id="12" src="Sounds/12.wav" preload="auto"></audio>
+  <audio id="13" src="Sounds/13.wav" preload="auto"></audio>
+  <audio id="14" src="Sounds/14.wav" preload="auto"></audio>
+  <audio id="15" src="Sounds/15.wav" preload="auto"></audio>
+  <audio id="16" src="Sounds/16.wav" preload="auto"></audio>
+  <audio id="17" src="Sounds/17.wav" preload="auto"></audio>
+  <audio id="18" src="Sounds/18.wav" preload="auto"></audio>
+  <audio id="19" src="Sounds/19.wav" preload="auto"></audio>
+  <audio id="20" src="Sounds/20.wav" preload="auto"></audio>
+  <audio id="21" src="Sounds/21.wav" preload="auto"></audio>
+  <audio id="22" src="Sounds/22.wav" preload="auto"></audio>
+  <audio id="23" src="Sounds/23.wav" preload="auto"></audio>
+  <audio id="24" src="Sounds/24.wav" preload="auto"></audio>
+  <audio id="25" src="Sounds/25.wav" preload="auto"></audio>
+  <audio id="26" src="Sounds/26.wav" preload="auto"></audio>
+  <audio id="27" src="Sounds/27.wav" preload="auto"></audio>
+  <audio id="28" src="Sounds/28.wav" preload="auto"></audio>
+  <audio id="29" src="Sounds/29.wav" preload="auto"></audio>
+  <audio id="30" src="Sounds/30.wav" preload="auto"></audio>
+  <audio id="31" src="Sounds/31.wav" preload="auto"></audio>
+  <audio id="32" src="Sounds/32.wav" preload="auto"></audio>
+  <audio id="33" src="Sounds/33.wav" preload="auto"></audio>
+  <audio id="34" src="Sounds/34.wav" preload="auto"></audio>
+  <audio id="35" src="Sounds/35.wav" preload="auto"></audio>
+  <audio id="36" src="Sounds/36.wav" preload="auto"></audio>
+  <audio id="37" src="Sounds/37.wav" preload="auto"></audio>
+  <audio id="38" src="Sounds/38.wav" preload="auto"></audio>
+  <audio id="39" src="Sounds/39.wav" preload="auto"></audio>
+  <audio id="40" src="Sounds/40.wav" preload="auto"></audio>
+  <audio id="41" src="Sounds/41.wav" preload="auto"></audio>
+  <audio id="42" src="Sounds/42.wav" preload="auto"></audio>
+  <audio id="43" src="Sounds/43.wav" preload="auto"></audio>
+  <audio id="44" src="Sounds/44.wav" preload="auto"></audio>
+  <audio id="45" src="Sounds/45.wav" preload="auto"></audio>
+  <audio id="46" src="Sounds/46.wav" preload="auto"></audio>
+  <audio id="47" src="Sounds/47.wav" preload="auto"></audio>
+  <audio id="48" src="Sounds/48.wav" preload="auto"></audio>
+  <audio id="49" src="Sounds/49.wav" preload="auto"></audio>
+  <audio id="50" src="Sounds/50.wav" preload="auto"></audio>
+  <audio id="51" src="Sounds/51.wav" preload="auto"></audio>
+  <audio id="52" src="Sounds/52.wav" preload="auto"></audio>
+  <audio id="53" src="Sounds/53.wav" preload="auto"></audio>
+  <audio id="54" src="Sounds/54.wav" preload="auto"></audio>
+  <audio id="55" src="Sounds/55.wav" preload="auto"></audio>
+  <audio id="56" src="Sounds/56.wav" preload="auto"></audio>
+  <audio id="57" src="Sounds/57.wav" preload="auto"></audio>
+  <audio id="58" src="Sounds/58.wav" preload="auto"></audio>
+  <audio id="59" src="Sounds/59.wav" preload="auto"></audio>
+  <audio id="60" src="Sounds/60.wav" preload="auto"></audio>
+  <audio id="61" src="Sounds/61.wav" preload="auto"></audio>
+  <audio id="62" src="Sounds/62.wav" preload="auto"></audio>
+  <audio id="63" src="Sounds/63.wav" preload="auto"></audio>
+  <audio id="64" src="Sounds/64.wav" preload="auto"></audio>
+  <audio id="65" src="Sounds/65.wav" preload="auto"></audio>
+
+
+
+  <div class="Conteiner">
+    <h1 id="sa">Virtual Guitar</h1>
+    <div class="GuitarBackground">
+      <ul class="guitarNeck">
+        <li class="GuitarNeck-ul-li">
+          <ul class="firstFret">
+            <li class="firstFret-ul-li">E<span class="note">0</span> </li>
+            <li class="firstFret-ul-li">B<span class="note">1</span> </li>
+            <li class="firstFret-ul-li">G<span class="note">2</span> </li>
+            <li class="firstFret-ul-li">D<span class="note">3</span> </li>
+            <li class="firstFret-ul-li">A<span class="note">4</span> </li>
+            <li class="firstFret-ul-li">E<span class="note">5</span> </li>
+          </ul>
+        </li>
+
+        <li class="GuitarNeck-ul-li">
+          <span class="note">6</span>
+          <span class="note">7</span>
+          <span class="note">8</span>
+          <span class="note">9</span>
+          <span class="note">10</span>
+          <span class="note">11</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">12</span>
+          <span class="note">13</span>
+          <span class="note">14</span>
+          <span class="note">15</span>
+          <span class="note">16</span>
+          <span class="note">17</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">18</span>
+          <span class="note">19</span>
+          <span class="note">20</span>
+          <span class="note">21</span>
+          <span class="note">22</span>
+          <span class="note">23</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">24</span>
+          <span class="note">25</span>
+          <span class="note">26</span>
+          <span class="note">27</span>
+          <span class="note">28</span>
+          <span class="note">29</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">30</span>
+          <span class="note">31</span>
+          <span class="note">32</span>
+          <span class="note">33</span>
+          <span class="note">34</span>
+          <span class="note">35</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">36</span>
+          <span class="note">37</span>
+          <span class="note">38</span>
+          <span class="note">39</span>
+          <span class="note">40</span>
+          <span class="note">41</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">42</span>
+          <span class="note">43</span>
+          <span class="note">44</span>
+          <span class="note">45</span>
+          <span class="note">46</span>
+          <span class="note">47</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">48</span>
+          <span class="note">49</span>
+          <span class="note">50</span>
+          <span class="note">51</span>
+          <span class="note">52</span>
+          <span class="note">53</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">54</span>
+          <span class="note">55</span>
+          <span class="note">56</span>
+          <span class="note">57</span>
+          <span class="note">58</span>
+          <span class="note">59</span>
+        </li>
+        <li class="GuitarNeck-ul-li">
+          <span class="note">60</span>
+          <span class="note">61</span>
+          <span class="note">62</span>
+          <span class="note">63</span>
+          <span class="note">64</span>
+          <span class="note">65</span>
+        </li>
+
+        <ul class="Strings">
+          <li class="String-li">
+            <span id="s0" class="string"></span>
+            <span id="sT0" class="stringTremble"></span>
+          </li>
+          <li class="String-li">
+            <span id="s1" class="string"></span>
+            <span id="sT1" class="stringTremble"></span>
+          </li>
+          <li class="String-li">
+            <span id="s2" class="string"></span>
+            <span id="sT2" class="stringTremble"></span>
+          </li>
+          <li class="String-li">
+            <span id="s3" class="string"></span>
+            <span id="sT3" class="stringTremble"></span>
+          </li>
+          <li class="String-li">
+            <span id="s4" class="string"></span>
+            <span id="sT4" class="stringTremble"></span>
+          </li>
+          <li class="String-li">
+            <span id="s5" class="string"></span>
+            <span id="sT5" class="stringTremble"></span>
+          </li>
+        </ul>
+      </ul>
+
+
+      <div class="ButtonsContainer">
+        <button class="PlayButton" onclick="PlaySelectedSong()"><span class="Play"></span>Play</button>
+        <button class="StopButton" onclick="StopSong()"><span class="Stop"></span>Stop</button>
+        <button id="RecordButton" class="RecordButton" onclick="Record()"><span id="recordSpan" class="Record"></span>
+          Record</button>
+      </div>
+
+      <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="Slider">
+      </div>
+
+      <div class="ComboBoxContainer">
+        <label class="ComboBoxLabel" for="songs"> Choose A Song : </label>
+        <select class="ComboBox" id="songs">
+
+          <option>The Godfather</option>
+          <option>Pirates Of The Caribbean</option>
+          
+        </select>
+      </div>
+
+
+    </div>
+
+  </div>
+</body>
+
+</html>
