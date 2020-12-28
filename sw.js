@@ -11,8 +11,8 @@ function save(req, resp) {
   .then(cache => { // save request
     if(resp.ok){
       cache.put(req, resp.clone());
+      }
       return resp;
-    }
   }) 
   .catch(console.err)
 }
