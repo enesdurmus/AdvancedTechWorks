@@ -9,7 +9,7 @@ function save(req, resp) {
      return resp;
   return caches.open(CACHE)
   .then(cache => { // save request
-    cache.put(req, resp.clone());
+    if(resp.ok)cache.put(req, resp.clone());
     return resp;
   }) 
   .catch(console.err)
