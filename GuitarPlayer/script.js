@@ -18,6 +18,7 @@ class Song {
 
 var notes = [];
 var rotateList = [];
+var isPlaying = 0;
 
 //Fill list with notes at the beginning of the program.
 function fillNotesList() {
@@ -47,9 +48,11 @@ var trembleList = { transform: rotateList };
 function Play(note) {
   var audio = document.getElementById(note); //We get the audio by the given value. The value is between 0 to 77. all numbers define a note.
   ClearStringSounds(note); // We pause all sound on the string that we press.
-  audio.currentTime = 0; // If we press the same place we restart the audio
-  audio.play();
-  StringTremble(note); //And when we play sound we tremble the string.
+  if (audio != null) {
+    audio.currentTime = 0; // If we press the same place we restart the audio
+    audio.play();
+    StringTremble(note);//And when we play sound we tremble the string.
+  }
 }
 
 function StringTremble(note) {
@@ -83,21 +86,26 @@ async function PlaySong(song) {
   for (let i = 0; i < song.length; i++) {
     await Wait(song[i].ms);        // We wait according to ms of record
     if (song.length != 0 && stopSong == 0) {        // If the record is not empty
+      isPlaying = 1;
       SlideTheBar(song.length, i);
       Play(song[i].note);          // We play the note that recorded
       console.log(song[i].note, song[i].ms);
     }
     else {
-      console.log("Record is empty or The StopSong worked")
       stopSong = 0;
+      isPlaying = 0;
       break;
     }
   }
+  isPlaying = 0;
 }
 
 var stopSong = 0;
-function StopSong() { // it doesnt work now.
-  stopSong = 1; // We clear the array to stop playing.
+function StopSong() {
+  var slider = document.getElementById("Slider");
+  stopSong = 1;
+  slider.value = 0;
+  isPlaying = 0;
 }
 
 
@@ -107,48 +115,52 @@ var titleCount = 0;
 //When we press the record button this function called.
 function Record() {
   //This function just makes the global variable "isRecording" to 1 or 0 and global variable "time1" equals to dateNow.
-  if (isRecording == 0) {
-    record = [];
-    time1 = Date.now();
-    isRecording = 1;
-    RecordAnimation();
-  }
-  else {
-    //We add the record to the recordList and the comboBox with name that user give us.
-    var selectTag = document.getElementById("songs");
-    var option = document.createElement("option");
-    var songName = prompt("Please Name Your Song");
-   
-    SongList.forEach(element => {
-      if (element.songName == songName) {
-        alert("This song name has already given.");
-        songName = "";
-      }
-    });
-
-    if (songName == null || songName == "") {
-      songName = "Untitled" + titleCount;
-      titleCount++;
+  if (isPlaying == 0) {
+    if (isRecording == 0) {
+      record = [];
+      time1 = Date.now();
+      isRecording = 1;
+      RecordAnimation();
     }
-    option.text = songName;
-    selectTag.add(option);
-    song = new Song(songName, record);
-    SongList.push(song);
-    isRecording = 0
-    RecordAnimation();
-    selectTag.selectedIndex = selectTag.length - 1; // We choose the last added.
+    else {
+      //We add the record to the recordList and the comboBox with name that user give us.
+      var selectTag = document.getElementById("songs");
+      var option = document.createElement("option");
+      var songName = prompt("Please Name Your Song");
+
+      SongList.forEach(element => {
+        if (element.songName == songName) {
+          alert("This song name has already given.");
+          songName = "";
+        }
+      });
+
+      if (songName == null || songName == "") {
+        songName = "Untitled" + titleCount;
+        titleCount++;
+      }
+      option.text = songName;
+      selectTag.add(option);
+      song = new Song(songName, record);
+      SongList.push(song);
+      isRecording = 0
+      RecordAnimation();
+      selectTag.selectedIndex = selectTag.length - 1; // We choose the last added.
+    }
+    console.log(isRecording);
   }
-  console.log(isRecording);
 }
 
 // When we press the play button this function called.
 function PlaySelectedSong() {
   var songs = document.getElementById("songs"); // We get comboBox
   var songName = songs.options[songs.selectedIndex].value; // We get the selected song's name.
-  console.log(songName);
-  for (let i = 0; i < SongList.length; i++) {
-    if (SongList[i].songName == songName) {  // We find the song from the SongList
-      PlaySong(SongList[i].song);  // And give it to the PlaySong Function.
+  if (isPlaying == 0 && isRecording == 0) {
+    console.log(songName);
+    for (let i = 0; i < SongList.length; i++) {
+      if (SongList[i].songName == songName) {  // We find the song from the SongList
+        PlaySong(SongList[i].song);  // And give it to the PlaySong Function.
+      }
     }
   }
 }
@@ -188,7 +200,7 @@ function ClearStringSounds(note) {
 }
 
 window.onclick = e => {
-  if (e.target.tagName == "SPAN") { //if we press a note that means a span
+  if (e.target.tagName == "SPAN" && isPlaying == 0) { //if we press a note that means a span
     console.log(e.target.innerText);
     Play(e.target.innerText);       // call the play function.
     if (isRecording == 1) {         // And if we are recording

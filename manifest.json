@@ -7,7 +7,7 @@
     "theme-color": "orange",
     "icons": [
       {
-        "src": "myicon.png",
+        "src": "Images/myicon.png",
         "sizes": "192x192",
         "type": "image/png"
       }
